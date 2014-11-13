@@ -1,0 +1,15 @@
+%h3 Sign Up for ElevenNote
+= form_for @user do |f|
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :username
+    %br
+    = f.text_field :username
+  %p
+    = f.label :password
+    %br
+    = f.password_field :password
+  = f.submit 'Sign Up', class: 'btn btn-default'
