@@ -26,3 +26,11 @@ en:
       create:
         success: "Thanks for signing up!"
         failure: "Oh you really shit the bed now!"
+  session:
+    flash:
+      create:
+        success: "Welcome!"
+        failure: "JUST WHAT ARE YOU TRYING TO PULL???"
+      destroy:
+        success: "See ya later!"
+        failure: "YOU CAN'T LOG OUT, WE LOVE YOU TOO MUCH! NEVER LEAVE!"
