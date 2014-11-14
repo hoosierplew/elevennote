@@ -8,11 +8,11 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    @note = current_user.notes.new
   end
 
   def create
-    @note = Note.new note_params
+    @note = current_user.notes.new note_params
     set_flash_for( @note.save )
     render_or_redirect
   end
@@ -30,7 +30,7 @@ class NotesController < ApplicationController
   private ##########################################################################################
 
   def load_notes
-    @notes = Note.all
+    @notes = current_user.notes.all
   end
 
   def note_params
@@ -38,7 +38,7 @@ class NotesController < ApplicationController
   end
 
   def find_note
-    @note = Note.find params[:id]
+    @note = current_user.notes.find params[:id]
   end
 
   def set_flash_for(action_result)

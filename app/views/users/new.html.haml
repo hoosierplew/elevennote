@@ -13,4 +13,4 @@
     %br
     = f.password_field :password
   = f.submit 'Sign Up', class: 'btn btn-default'
-  .login= "Already have an account? #{link_to 'Sign in', login_path}."
+  .login= "Already have an account? #{link_to 'Sign in', login_path}.".html_safe

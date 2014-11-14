@@ -12,7 +12,7 @@
       .col-xs-12
         %header
           .well
-            ElevenNote
+            =link_to "ElevenNote", new_note_path
             .pull-right
               - if current_user.present?
                 %i.fa.fa-user
