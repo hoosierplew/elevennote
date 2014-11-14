@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'bootsy'
 
 # Security #########################################################################################
 gem 'bcrypt', '~> 3.1.7'

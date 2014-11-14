@@ -13,4 +13,5 @@
  *= require structure
  *= require_tree .
  *= require_self
+ *= require bootsy
  */

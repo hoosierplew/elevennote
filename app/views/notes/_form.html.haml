@@ -1,5 +1,5 @@
 = form_for @note do |f|
-  %p= f.text_field :title, placeholder: 'Your Note Title'
-  %p= f.text_area :body_html, rows: 15, class: 'bootsy_text_area'
+  %p= f.text_field :title, placeholder: 'Your Note Title', autofocus: title_autofocus?(f.object)
+  %p= f.bootsy_area :body_html, rows: 15, placeholder: 'Add your note here'
   .form-actions
     = f.submit 'Save Note', class: 'btn btn-default'
