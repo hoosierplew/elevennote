@@ -17,7 +17,10 @@
               - if current_user.present?
                 %i.fa.fa-user
                 = "Signed in as #{current_user.display_name}."
-                = link_to 'Logout', logout_path, method: :delete
+                = link_to "<i class='fa fa-sign-out'></i>".html_safe,
+                          logout_path,
+                          title: "Sign out of ElevenNote",
+                          method: :delete
               - else
                 %i.fa.fa-sign-in
                 = link_to 'Sign Up', sign_up_path

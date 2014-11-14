@@ -42,3 +42,6 @@ en:
       update:
         success: "Your note has been updated"
         failure: "I DO NOT LIKE YOUR NOTE, SO I DID NOT UPDATE IT."
+      destroy:
+        success: "Your note has been deleted"
+        failure: "YOUR NOTE IS TOO SPECIAL FOR ME TO JUST LET IT GO!"  

@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  before_action :find_note, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user
+  before_action :find_note, only: [:edit, :update, :destroy]
 
   def show
     remder :edit
@@ -9,29 +10,20 @@ class NotesController < ApplicationController
     @note = Note.new
   end
 
-  def edit
-  end
-
   def create
     @note = Note.new note_params
-    if @note.save
-      flash.now[:notice] = t('note.flash.create.success')
-    else
-      flash.now[:alert] = t('note.flash.create.failure')
-    end
-    render :edit
+    set_flash_for( @note.save )
+    render_or_redirect
   end
 
   def destroy
+    set_flash_for @note.destroy
+    redirect_to new_note_path
   end
 
   def update
-    if @note.update note_params
-      flash.now[:notice] = t('note.flash.update.success')
-    else
-      flash.now[:alert] = t('note.flash.update.failure')
-    end
-    render :edit
+    set_flash_for @note.update( note_params )
+    render_or_redirect
   end
 
   private ##########################################################################################
@@ -44,4 +36,15 @@ class NotesController < ApplicationController
     @note = Note.find params[:id]
   end
 
+  def set_flash_for(action_result)
+    if action_result
+      flash.now[:notice] = t("note.flash.#{action_name}.success")
+    else
+      flash.now[:alert] = t("note.flash.#{action_name}.failure")
+    end
+  end
+
+  def render_or_redirect
+    @note.errors.any? ? render :edit : redirect_to @note
+  end
 end
