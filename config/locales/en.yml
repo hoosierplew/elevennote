@@ -34,3 +34,11 @@ en:
       destroy:
         success: "See ya later!"
         failure: "YOU CAN'T LOG OUT, WE LOVE YOU TOO MUCH! NEVER LEAVE!"
+  note:
+    flash:
+      create:
+        success: "Your note has been created"
+        failure: "I DO NOT LIKE YOUR NOTE, SO I DID NOT SAVE IT."
+      update:
+        success: "Your note has been updated"
+        failure: "I DO NOT LIKE YOUR NOTE, SO I DID NOT UPDATE IT."

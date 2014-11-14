@@ -13,12 +13,13 @@
         %header
           .well
             ElevenNote
-            - if current_user.present?
-              = "Signed in as #{current_user.display_name}."
-              = link_to 'Logout', logout_path, method: :delete
-            - else
-              = link_to 'Sign Up', sign_up_path
-              = link_to 'Login', login_path
+            .pull-right
+              - if current_user.present?
+                = "Signed in as #{current_user.display_name}."
+                = link_to 'Logout', logout_path, method: :delete
+              - else
+                = link_to 'Sign Up', sign_up_path
+                = link_to 'Login', login_path
 
 
     .container
