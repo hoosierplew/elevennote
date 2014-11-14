@@ -1,9 +1,10 @@
 class NotesController < ApplicationController
   before_action :authorize_user
-  before_action :find_note, only: [:edit, :update, :destroy]
+  before_action :load_notes
+  before_action :find_note, only: [:show, :edit, :update, :destroy]
 
   def show
-    remder :edit
+    render :edit
   end
 
   def new
@@ -28,6 +29,10 @@ class NotesController < ApplicationController
 
   private ##########################################################################################
 
+  def load_notes
+    @notes = Note.all
+  end
+
   def note_params
     params.require(:note).permit(:title, :body_html)
   end
@@ -45,6 +50,6 @@ class NotesController < ApplicationController
   end
 
   def render_or_redirect
-    @note.errors.any? ? render :edit : redirect_to @note
+    @note.errors.any? ? render(:edit) : redirect_to(@note)
   end
 end
