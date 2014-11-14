@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy', as: :logout
   get 'login' => 'sessions#new', as: :login
 
+  # /api/v1/notes.json
+  # namespace versioning allows for custom api implementations for clients, etc
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :notes
+    end
+  end
+
   # This is totally a thing we could do with notes.
   # resources :users do
   #   # /users/1/notes
