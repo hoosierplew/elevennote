@@ -1,5 +1,8 @@
 class NotesController < ApplicationController
+  before_action :find_note, only: [:show, :edit, :update, :destroy]
+
   def show
+    remder :edit
   end
 
   def new
@@ -7,7 +10,6 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find params[:id]
   end
 
   def create
@@ -24,7 +26,6 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find params[:id]
     if @note.update note_params
       flash.now[:notice] = t('note.flash.update.success')
     else
@@ -37,6 +38,10 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body_html)
+  end
+
+  def find_note
+    @note = Note.find params[:id]
   end
 
 end
